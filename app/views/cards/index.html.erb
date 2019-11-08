@@ -3,15 +3,7 @@
 <div class="row">
   <% @card.each do |card| %>
     <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="card-title"><%= card.original_text %></h3>
-          <div class="card-text">
-            <%= card.translated_text %>
-            <div class="text-primary"><%= card.review_date.strftime("%d/%m/%Y") %></div>
-          </div>
-        </div>
-      </div>
+      <%= render partial: "card", locals: { card: card } %>
     </div>
   <% end %>
 </div>
