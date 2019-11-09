@@ -7,3 +7,6 @@ Documentation:
 Style/WordArray:
   EnforcedStyle: brackets
 
+Metrics/LineLength:
+  Max: 120
+
