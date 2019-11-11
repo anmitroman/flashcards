@@ -2,6 +2,14 @@ AllCops:
   Exclude:
     - config/initializers/simple_form_bootstrap.rb
     - config/initializers/simple_form.rb
+    - bin/**/*
+  Include:
+    - db/seeds.rb
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/WordArray:
   EnforcedStyle: brackets
 
 Style/FrozenStringLiteralComment:
