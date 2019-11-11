@@ -1,15 +1,14 @@
 AllCops:
   Exclude:
     - config/initializers/simple_form_bootstrap.rb
+    - config/initializers/simple_form.rb
+  EnforcedStyle: brackets
 
 Style/FrozenStringLiteralComment:
   Enabled: false
 
 Documentation:
   Enabled: false
-
-Style/WordArray:
-  EnforcedStyle: brackets
 
 Metrics/LineLength:
   Max: 120
