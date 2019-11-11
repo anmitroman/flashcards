@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title"><%= link_to card.original_text, card_path(card) %></h3>
+    <div class="card-text">
+      <%= card.translated_text %>
+      <div class="text-primary"><%= card.review_date.strftime("%d/%m/%Y") %></div>
+      <%= link_to 'Редачить', edit_card_path(card), :class => "btn btn-primary" %>
+      <%= link_to 'Дестрой', card_path(card), method: :delete, data: {confirm: "Точно удаляем? Совсем?"}, :class => "btn btn-danger" %>
+    </div>
+  </div>
+</div>
