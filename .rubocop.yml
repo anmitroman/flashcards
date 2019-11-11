@@ -1,3 +1,7 @@
+AllCops:
+  Exclude:
+    - config/initializers/simple_form_bootstrap.rb
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
