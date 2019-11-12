@@ -5,6 +5,7 @@ AllCops:
     - bin/**/*
   Include:
     - db/seeds.rb
+    - lib/parser.rb
 
 Style/SymbolArray:
   EnforcedStyle: brackets
