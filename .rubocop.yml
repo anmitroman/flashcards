@@ -4,8 +4,12 @@ AllCops:
     - config/initializers/simple_form.rb
     - bin/**/*
   Include:
-    - db/seeds.rb
-    - lib/parser.rb
+    - app/controllers/cards_controller.rb
+    - app/controllers/pages_controller.rb
+    - app/assets/stylesheets/card.scss
+    - app/models/card.rb
+    - app/views/pages/index.html.erb
+    - config/routes.rb
 
 Style/SymbolArray:
   EnforcedStyle: brackets

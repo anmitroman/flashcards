@@ -4,8 +4,7 @@ class CardsController < ApplicationController
     @card = Card.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @card = Card.new
@@ -19,8 +18,8 @@ class CardsController < ApplicationController
       render 'new'
     end
   end
-  def edit
-  end
+
+  def edit; end
 
   def update
     if @card.update(card_params)
@@ -33,6 +32,21 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     redirect_to cards_path
+  end
+
+  def check
+    find_text = params[:card][:check_original_text].strip
+    id_card = params[:card][:id]
+    @card = Card.find(id_card)
+    if find_text.empty?
+      flash[:error] = 'Пустое значение! Попробуйте еще раз...'
+    elsif @card.original_text.include?(find_text)
+      @card.update(review_date: Date.today + 3)
+      flash[:notice] = 'Все верно! Идем дальше...'
+    else
+      flash[:error] = 'Не верно! Попробуйте еще раз...'
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   private
