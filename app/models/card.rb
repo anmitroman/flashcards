@@ -1,6 +1,6 @@
 class Card < ApplicationRecord
   scope :date_has_expired, -> { where('review_date <= ?', Date.today) }
-  scope :random, -> { order(Arel.sql('random()')) } 
+  scope :random, -> { order(Arel.sql('random()')) }
   validates :original_text, :translated_text, presence: true
   validate :original_text_equal_translated_text
 

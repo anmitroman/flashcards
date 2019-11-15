@@ -41,7 +41,7 @@ class CardsController < ApplicationController
     to_index = @card.original_text.index('[')
     if find_text.empty?
       flash[:error] = 'Пустое значение! Попробуйте еще раз...'
-    elsif @card.original_text[0, to_index-1] == find_text
+    elsif @card.original_text[0, to_index - 1] == find_text
       @card.update(review_date: Date.today + 3)
       flash[:notice] = 'Все верно! Идем дальше...'
     else
