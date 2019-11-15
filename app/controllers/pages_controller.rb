@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def index
-    @card = Card.date_has_expired.sample(1).first
+    @card = Card.date_has_expired.random.first
   end
 end
