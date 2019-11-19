@@ -40,7 +40,7 @@ class CardsController < ApplicationController
     @card = Card.find(id_card)
     if find_text.empty?
       flash[:error] = 'Пустое значение! Попробуйте еще раз...'
-    elsif @card.original_text.downcase == find_text.downcase
+    elsif @card.original_text.casecmp(find_text) == 0
       @card.update(review_date: Date.today + 3)
       flash[:notice] = 'Все верно! Идем дальше...'
     else
