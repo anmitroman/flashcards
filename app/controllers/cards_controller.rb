@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :get_card, only: [:show, :edit, :update, :destroy]
+  before_action :get_card, only: [:show, :edit, :update, :destroy, :check]
   def index
     @card = Card.all
   end
@@ -36,8 +36,6 @@ class CardsController < ApplicationController
 
   def check
     find_text = params[:card][:check_original_text].strip.downcase
-    id_card = params[:id]
-    @card = Card.find(id_card)
     if find_text.empty?
       flash[:error] = 'Пустое значение! Попробуйте еще раз...'
     elsif @card.original_text.casecmp(find_text).zero?

@@ -11,7 +11,6 @@
       <div class="card-text">
         <div class="text-primary"><%= @card.review_date.strftime("%d/%m/%Y") %></div>
         <%= simple_form_for(@card, method: :get, url: check_card_path(@card.id)) do |f| %>
-          <%= f.input :translated_text, as: :hidden %>
           <%= f.input :check_original_text, input_html: { value: '' } %>
           <%= f.button :submit, 'Check' %>
         <% end %>
