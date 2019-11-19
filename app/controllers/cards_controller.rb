@@ -36,12 +36,11 @@ class CardsController < ApplicationController
 
   def check
     find_text = params[:card][:check_original_text].strip.downcase
-    id_card = params[:card_id]
+    id_card = params[:id]
     @card = Card.find(id_card)
-    to_index = @card.original_text.index('[')
     if find_text.empty?
       flash[:error] = 'Пустое значение! Попробуйте еще раз...'
-    elsif @card.original_text[0, to_index - 1] == find_text
+    elsif @card.original_text.downcase == find_text.downcase
       @card.update(review_date: Date.today + 3)
       flash[:notice] = 'Все верно! Идем дальше...'
     else

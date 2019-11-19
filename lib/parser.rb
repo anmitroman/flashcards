@@ -4,7 +4,10 @@ module Parser
     words = []
     date = Date.today + 3
     doc.xpath('//table/tbody/tr[position() > 1]').each do |word|
-      words << [word.search('td[2]').text.strip, word.search('td[3]').text.strip, date]
+      original_text = word.search('td[2]').text.strip
+      to_index = original_text.index('[')
+      original_text = original_text[0, to_index - 1]
+      words << [original_text.strip, word.search('td[3]').text.strip, date]
     end
     words
   end
