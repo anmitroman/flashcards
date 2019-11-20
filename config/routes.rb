@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
-  resources :cards
+  resources :cards do
+    member do
+      get 'check'
+    end
+  end
 end

@@ -1,1 +1,20 @@
 <p class="alert alert-primary" style="font-size: 22px;">Первый в мире удобный менеджер флеш-карточек. Именно так.</p>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: "alert #{name}" %>
+<% end -%>
+<% if @card.nil? %>
+  <%= content_tag :div, 'Сегодня учить нечего', class: "alert error" %>
+<% else %>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title"><%= @card.translated_text %></h3>
+      <div class="card-text">
+        <div class="text-primary"><%= @card.review_date.strftime("%d/%m/%Y") %></div>
+        <%= simple_form_for(@card, method: :get, url: check_card_path(@card.id)) do |f| %>
+          <%= f.input :check_original_text, input_html: { value: '' } %>
+          <%= f.button :submit, 'Check' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

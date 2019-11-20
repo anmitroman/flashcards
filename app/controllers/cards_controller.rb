@@ -1,11 +1,10 @@
 class CardsController < ApplicationController
-  before_action :get_card, only: [:show, :edit, :update, :destroy]
+  before_action :get_card, only: [:show, :edit, :update, :destroy, :check]
   def index
     @card = Card.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @card = Card.new
@@ -19,8 +18,8 @@ class CardsController < ApplicationController
       render 'new'
     end
   end
-  def edit
-  end
+
+  def edit; end
 
   def update
     if @card.update(card_params)
@@ -33,6 +32,19 @@ class CardsController < ApplicationController
   def destroy
     @card.destroy
     redirect_to cards_path
+  end
+
+  def check
+    find_text = params[:card][:check_original_text].strip.downcase
+    if find_text.empty?
+      flash[:error] = 'Пустое значение! Попробуйте еще раз...'
+    elsif @card.original_text.casecmp(find_text).zero?
+      @card.update(review_date: Date.today + 3)
+      flash[:notice] = 'Все верно! Идем дальше...'
+    else
+      flash[:error] = 'Не верно! Попробуйте еще раз...'
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   private
