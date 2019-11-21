@@ -31,3 +31,6 @@ Metrics/LineLength:
 
 Metrics/AbcSize:
   Max: 20
+
+Style/EndOfLine:
+  EnforcedStyle: lf
