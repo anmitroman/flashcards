@@ -39,6 +39,9 @@ gem 'simple_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'database_cleaner', '~> 1.7'
+  gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
+  gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.76.0', require: false
 end
 

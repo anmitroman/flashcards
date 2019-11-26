@@ -6,10 +6,13 @@ AllCops:
   Include:
     - app/controllers/cards_controller.rb
     - app/controllers/pages_controller.rb
-    - app/assets/stylesheets/card.scss
     - app/models/card.rb
     - app/views/pages/index.html.erb
     - config/routes.rb
+    - spec/models/card_spec.rb
+    - spec/support/factory_bot.rb
+    - spec/factories.rb
+    - spec/rails_helper.rb
 
 Style/SymbolArray:
   EnforcedStyle: brackets
@@ -26,3 +29,8 @@ Documentation:
 Metrics/LineLength:
   Max: 120
 
+Metrics/AbcSize:
+  Max: 20
+
+Style/EndOfLine:
+  EnforcedStyle: lf
