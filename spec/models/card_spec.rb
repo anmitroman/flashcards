@@ -3,15 +3,9 @@ require 'rails_helper'
 RSpec.describe Card, type: :model do
   let!(:card1) { create(:card) }
 
-  context 'when card has original text' do
-    it 'shoud be "sun"' do
-      expect(card1.original_text).to eq('sun')
-    end
-  end
-
   context 'when translated text is equal original text' do
     it 'should not be valid' do
-      card2 = build(:card, translated_text: 'sun')
+      card2 = build(:card, original_text: 'sun', translated_text: 'sun')
       expect(card2).to_not be_valid
     end
   end
